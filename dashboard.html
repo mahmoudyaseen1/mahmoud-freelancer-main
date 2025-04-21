@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - U-FreeLance</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Color Overrides -->
+    <link rel="stylesheet" href="css/custom-overrides.css">
+    <style>
+        /* Custom styles for the dashboard */
+        body {
+            background-color: #ffffff;
+        }
+        
+        /* Page loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e1aa3b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive sidebar */
+        @media (max-width: 991px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                z-index: 1000;
+                background-color: white;
+                transition: all 0.3s;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                overflow-y: auto;
+            }
+            
+            .sidebar.active {
+                right: 0;
+            }
+            
+            .sidebar-toggle {
+                display: block !important;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1001;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #e1aa3b;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            }
+        }
+        
+        /* Dashboard cards and effects */
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Timeline style */
+        .timeline-item {
+            position: relative;
+        }
+        
+        /* RTL support for Arabic */
+        .dropdown-menu {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .me-2 {
+            margin-left: 0.5rem !important;
+            margin-right: 0 !important;
+        }
+        
+        [dir="rtl"] .ms-3 {
+            margin-right: 1rem !important;
+            margin-left: 0 !important;
+        }
+
+        /* Brand specific styles */
+        .border-primary {
+            border-color: #e1aa3b !important;
+        }
+
+        .list-group-item.active {
+            background-color: #e1aa3b !important;
+            border-color: #e1aa3b !important;
+        }
+
+        .bg-primary {
+            background-color: #e1aa3b !important;
+        }
+
+        .text-primary {
+            color: #e1aa3b !important;
+        }
+
+        .bg-dark {
+            background-color: #1d1c1b !important;
+        }
+
+        .progress-bar.bg-primary {
+            background-color: #e1aa3b !important;
+        }
+
+        .bg-primary.bg-opacity-10 {
+            background-color: rgba(225, 170, 59, 0.1) !important;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-handshake me-2"></i>منصة فري لانس
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="position-relative me-2">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    3
+                                </span>
+                            </div>
+                            الإشعارات
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">تم قبول عرضك على مشروع "تصميم موقع"</a></li>
+                            <li><a class="dropdown-item" href="#">تمت إضافة 500 ر.س إلى رصيدك</a></li>
+                            <li><a class="dropdown-item" href="#">لديك رسالة جديدة من "محمد أحمد"</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">عرض كل الإشعارات</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="صورة المستخدم" class="rounded-circle me-2">
+                            <span>أحمد محمد</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>الملف الشخصي</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="logout.html"><i class="fas fa-sign-out-alt me-2"></i>تسجيل الخروج</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush rounded-top">
+                            <a href="dashboard.html" class="list-group-item list-group-item-action active py-3 fw-medium border-start border-4 border-primary">
+                                <i class="fas fa-tachometer-alt me-2"></i>لوحة التحكم
+                            </a>
+                            <a href="projects.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-clipboard-list me-2"></i>المشاريع
+                            </a>
+                            <a href="proposals.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-paper-plane me-2"></i>العروض
+                                <span class="badge bg-primary rounded-pill float-start">5</span>
+                            </a>
+                            <a href="ongoing-projects.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-tasks me-2"></i>المشاريع الجارية
+                                <span class="badge bg-success rounded-pill float-start">2</span>
+                            </a>
+                            <a href="completed-projects.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-check-circle me-2"></i>المشاريع المكتملة
+                            </a>
+                            <a href="profile.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-user me-2"></i>الملف الشخصي
+                            </a>
+                            <a href="messages.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-envelope me-2"></i>الرسائل
+                                <span class="badge bg-danger rounded-pill float-start">5</span>
+                            </a>
+                            <a href="transactions.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-money-bill-wave me-2"></i>المعاملات المالية
+                            </a>
+                            <a href="reviews.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-star me-2"></i>التقييمات
+                            </a>
+                            <a href="settings.html" class="list-group-item list-group-item-action py-3 fw-medium">
+                                <i class="fas fa-cog me-2"></i>الإعدادات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Stats Card -->
+                <div class="card border-0 shadow-sm mt-4">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0">إحصائيات سريعة</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">الرصيد الحالي</span>
+                            <span class="fw-bold">$1,250</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">المشاريع المكتملة</span>
+                            <span class="fw-bold">24</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted">التقييم العام</span>
+                            <div>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <span class="ms-1 fw-bold">4.5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Welcome Banner -->
+                <div class="card bg-primary text-white border-0 mb-4 overflow-hidden">
+                    <div class="card-body position-relative py-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4 class="mb-1">مرحبا، أحمد محمد</h4>
+                                <p class="mb-3 opacity-75">أهلا بعودتك! لديك 3 إشعارات جديدة اليوم.</p>
+                                <a href="#" class="btn btn-light btn-sm">عرض الإشعارات</a>
+                            </div>
+                        </div>
+                        <div class="position-absolute top-0 end-0 opacity-10 mt-n5 me-n5">
+                            <i class="fas fa-chart-line fa-8x"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards Row -->
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-project-diagram text-primary"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-1 text-muted">المشاريع النشطة</h6>
+                                        <h4 class="mb-0 fw-bold">7</h4>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 bg-success bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-dollar-sign text-success"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-1 text-muted">الأرباح هذا الشهر</h6>
+                                        <h4 class="mb-0 fw-bold">$2,580</h4>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0 bg-info bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-tasks text-info"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h6 class="mb-1 text-muted">المهام المنجزة</h6>
+                                        <h4 class="mb-0 fw-bold">85%</h4>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity and Earnings -->
+                <div class="row">
+                    <!-- Recent Activity -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">النشاطات الأخيرة</h5>
+                                <a href="#" class="text-decoration-none">عرض الكل</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="timeline">
+                                    <div class="timeline-item mb-3 pb-3 border-bottom">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-success bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-check text-success"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-1 fw-medium">تم إكمال مشروع تصميم الموقع</h6>
+                                                <p class="text-muted small mb-0">تم استلام الدفعة النهائية للمشروع</p>
+                                                <small class="text-muted">منذ ساعتين</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item mb-3 pb-3 border-bottom">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-primary bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-paper-plane text-primary"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-1 fw-medium">تم إرسال عرض جديد</h6>
+                                                <p class="text-muted small mb-0">قدمت عرضاً لمشروع تطوير تطبيق موبايل</p>
+                                                <small class="text-muted">اليوم، 10:30 صباحاً</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-warning bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="mb-1 fw-medium">حصلت على تقييم جديد</h6>
+                                                <p class="text-muted small mb-0">قيّم العميل "شركة الأفق" عملك بـ 5 نجوم</p>
+                                                <small class="text-muted">البارحة، 3:45 مساءً</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5>U-FreeLance</h5>
+                    <p class="text-muted">منصة العمل الحر المخصصة للطلاب الجامعيين</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6>روابط سريعة</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">الرئيسية</a></li>
+                        <li><a href="projects.html" class="text-muted">المشاريع</a></li>
+                        <li><a href="courses.html" class="text-muted">الدورات</a></li>
+                        <li><a href="register.html" class="text-muted">التسجيل</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للطلاب</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">كيف تبدأ</a></li>
+                        <li><a href="#" class="text-muted">نصائح للنجاح</a></li>
+                        <li><a href="#" class="text-muted">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للعملاء</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">نشر مشروع</a></li>
+                        <li><a href="#" class="text-muted">اختيار الفريلانسر</a></li>
+                        <li><a href="#" class="text-muted">ضمان الجودة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>الدعم</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">تواصل معنا</a></li>
+                        <li><a href="#" class="text-muted">سياسة الخصوصية</a></li>
+                        <li><a href="#" class="text-muted">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 bg-secondary">
+            <div class="text-center">
+                <p class="small text-muted mb-0">&copy; 2023 U-FreeLance. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide page loader when page is fully loaded
+            const pageLoader = document.querySelector('.page-loader');
+            if (pageLoader) {
+                setTimeout(() => {
+                    pageLoader.style.opacity = '0';
+                    pageLoader.style.visibility = 'hidden';
+                }, 800);
+            }
+        });
+
+        // Sidebar toggle for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add sidebar toggle button for mobile
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                const toggleButton = document.createElement('button');
+                toggleButton.classList.add('sidebar-toggle', 'd-lg-none', 'border-0');
+                toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.appendChild(toggleButton);
+                
+                toggleButton.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+                
+                // Close sidebar when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!sidebar.contains(event.target) && event.target !== toggleButton) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

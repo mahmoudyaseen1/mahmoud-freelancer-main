@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U-FreeLance - منصة العمل الحر للطلاب الجامعيين</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Color Overrides -->
+    <link rel="stylesheet" href="css/custom-overrides.css">
+    <style>
+        /* Hero section custom styles */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(29, 28, 27, 0.7), rgba(29, 28, 27, 0.7)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 600px;
+            padding: 100px 0;
+            color: #ffffff;
+        }
+        
+        .hero-badge {
+            background-color: rgba(225, 170, 59, 0.2);
+            color: #e1aa3b;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            border-right: 4px solid #e1aa3b;
+            padding-right: 1rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            margin-top: 3rem;
+        }
+        
+        .hero-stat-item {
+            margin-left: 2rem;
+            text-align: center;
+        }
+        
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e1aa3b;
+        }
+        
+        .hero-stat-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .hero-image-container {
+            position: relative;
+        }
+        
+        .hero-image {
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-card {
+            position: absolute;
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            width: 240px;
+        }
+        
+        .card-top-right {
+            top: -30px;
+            right: -30px;
+            z-index: 2;
+        }
+        
+        .card-bottom-left {
+            bottom: -30px;
+            left: -30px;
+            z-index: 2;
+        }
+        
+        .user-avatar-group {
+            display: flex;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-left: -15px;
+        }
+        
+        .user-avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .avatar-more {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e1aa3b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 3px solid white;
+            margin-left: -15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">U-FreeLance</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">المشاريع</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">الدورات التدريبية</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            الفريلانسر
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="dashboard.html">لوحة التحكم</a></li>
+                            <li><a class="dropdown-item" href="proposals.html">العروض</a></li>
+                            <li><a class="dropdown-item" href="ongoing-projects.html">المشاريع الجارية</a></li>
+                            <li><a class="dropdown-item" href="profile.html">الملف الشخصي</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            مدير التوظيف
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hiring-dashboard.html">لوحة التحكم</a></li>
+                            <li><a class="dropdown-item" href="hiring-proposals.html">عروض المشاريع</a></li>
+                            <li><a class="dropdown-item" href="hiring-projects.html">المشاريع النشطة</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">تسجيل الدخول</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-light text-primary px-3" href="register.html">إنشاء حساب</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-badge">
+                        <i class="fas fa-star me-2"></i>أفضل منصة للطلاب الجامعيين
+                    </div>
+                    <h1 class="hero-title">منصة <span style="color: #e1aa3b;">U-FreeLance</span></h1>
+                    <div class="hero-text">
+                        منصة العمل الحر المخصصة للطلاب الجامعيين، اكتسب خبرة عملية وحقق دخلاً إضافياً أثناء دراستك
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="register.html" class="btn btn-primary btn-lg px-4 fw-bold">سجل كطالب</a>
+                        <a href="register.html" class="btn btn-outline-light btn-lg px-4">سجل كعميل</a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">5000+</div>
+                            <div class="hero-stat-text">طالب مسجل</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">1200+</div>
+                            <div class="hero-stat-text">عميل نشط</div>
+                        </div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number">8500+</div>
+                            <div class="hero-stat-text">مشروع مكتمل</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="U-FreeLance" class="img-fluid hero-image">
+                        
+                        <!-- Card Top Right -->
+                        <div class="hero-card card-top-right d-none d-md-block">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="المستخدم" class="rounded-circle me-3" style="width: 50px; height: 50px;">
+                                <div>
+                                    <h6 class="mb-0">أحمد محمد</h6>
+                                    <small class="text-muted">مطور ويب</small>
+                                </div>
+                            </div>
+                            <div class="text-primary">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-1">4.8</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Card Bottom Left -->
+                        <div class="hero-card card-bottom-left d-none d-md-block">
+                            <div class="mb-3">
+                                <span class="fw-bold">طلابنا المتميزون</span>
+                            </div>
+                            <div class="user-avatar-group mb-2">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="المستخدم" class="user-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="المستخدم" class="user-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="المستخدم" class="user-avatar">
+                                <div class="avatar-more">25+</div>
+                            </div>
+                            <small class="text-muted">انضم إلى مجتمعنا من الطلاب المحترفين</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- Top Freelancers Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">أفضل الفريلانسرز الطلاب</h2>
+                <p class="text-muted">تعرّف على نخبة من الطلاب المتميزين في منصتنا</p>
+            </div>
+            <div class="row g-4">
+                <!-- Freelancer Card 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <span class="badge bg-primary">الأعلى تقييماً</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80" class="card-img-top" style="height: 200px; object-fit: cover;" alt="صورة خلفية">
+                        </div>
+                        <div class="card-body text-center position-relative" style="margin-top: -50px;">
+                            <div class="mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle border border-4 border-white" width="100" height="100" alt="صورة الفريلانسر">
+                            </div>
+                            <h5 class="card-title mb-1">أحمد محمد</h5>
+                            <p class="text-muted mb-2">مطور ويب</p>
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <span class="ms-1">4.5</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark me-1">HTML</span>
+                                <span class="badge bg-light text-dark me-1">CSS</span>
+                                <span class="badge bg-light text-dark">React</span>
+                            </div>
+                            <a href="freelancer-profile.html" class="btn btn-outline-primary w-100">عرض الملف</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Freelancer Card 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" class="card-img-top" style="height: 200px; object-fit: cover;" alt="صورة خلفية">
+                        </div>
+                        <div class="card-body text-center position-relative" style="margin-top: -50px;">
+                            <div class="mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle border border-4 border-white" width="100" height="100" alt="صورة الفريلانسر">
+                            </div>
+                            <h5 class="card-title mb-1">نورة علي</h5>
+                            <p class="text-muted mb-2">مصممة جرافيك</p>
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                                <span class="ms-1">4.0</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark me-1">Photoshop</span>
+                                <span class="badge bg-light text-dark me-1">Illustrator</span>
+                            </div>
+                            <a href="freelancer-profile.html" class="btn btn-outline-primary w-100">عرض الملف</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Freelancer Card 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <span class="badge bg-success">متميز</span>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" class="card-img-top" style="height: 200px; object-fit: cover;" alt="صورة خلفية">
+                        </div>
+                        <div class="card-body text-center position-relative" style="margin-top: -50px;">
+                            <div class="mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/29.jpg" class="rounded-circle border border-4 border-white" width="100" height="100" alt="صورة الفريلانسر">
+                            </div>
+                            <h5 class="card-title mb-1">سامي خالد</h5>
+                            <p class="text-muted mb-2">كاتب محتوى</p>
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                                <span class="ms-1">4.0</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark me-1">SEO</span>
+                                <span class="badge bg-light text-dark me-1">المحتوى</span>
+                            </div>
+                            <a href="freelancer-profile.html" class="btn btn-outline-primary w-100">عرض الملف</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Freelancer Card 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1571844307880-751c6d86f3f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=873&q=80" class="card-img-top" style="height: 200px; object-fit: cover;" alt="صورة خلفية">
+                        </div>
+                        <div class="card-body text-center position-relative" style="margin-top: -50px;">
+                            <div class="mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" class="rounded-circle border border-4 border-white" width="100" height="100" alt="صورة الفريلانسر">
+                            </div>
+                            <h5 class="card-title mb-1">فاطمة محمد</h5>
+                            <p class="text-muted mb-2">خبيرة تسويق رقمي</p>
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                                <span class="ms-1">3.5</span>
+                            </div>
+                            <div class="mb-3">
+                                <span class="badge bg-light text-dark me-1">التسويق</span>
+                                <span class="badge bg-light text-dark me-1">السوشيال ميديا</span>
+                            </div>
+                            <a href="freelancer-profile.html" class="btn btn-outline-primary w-100">عرض الملف</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="top-freelancers.html" class="btn btn-primary px-4 py-2">عرض كل الفريلانسرز</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">مميزات المنصة</h2>
+                <p class="text-muted">كل ما تحتاجه للنجاح في رحلة العمل الحر</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary p-3 rounded-circle mx-auto mb-4">
+                                <i class="fas fa-user-graduate fa-2x"></i>
+                            </div>
+                            <h4>فرص للطلاب</h4>
+                            <p class="text-muted">احصل على خبرة عملية حقيقية أثناء دراستك الجامعية وابدأ بناء محفظتك المهنية</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary p-3 rounded-circle mx-auto mb-4">
+                                <i class="fas fa-briefcase fa-2x"></i>
+                            </div>
+                            <h4>مشاريع متنوعة</h4>
+                            <p class="text-muted">تصفح مجموعة متنوعة من المشاريع في مختلف المجالات واختر ما يناسب مهاراتك</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-opacity-10 text-primary p-3 rounded-circle mx-auto mb-4">
+                                <i class="fas fa-shield-alt fa-2x"></i>
+                            </div>
+                            <h4>بيئة آمنة</h4>
+                            <p class="text-muted">منصة موثوقة تضمن حقوق جميع الأطراف وتوفر الدعم اللازم لإتمام المشاريع بنجاح</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">كيف تعمل المنصة</h2>
+                <p class="text-muted">خطوات بسيطة للبدء في رحلة العمل الحر</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="step-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                                <span class="fw-bold">1</span>
+                            </div>
+                            <h5>إنشاء حساب</h5>
+                            <p class="text-muted">سجل كطالب أو عميل وأكمل ملفك الشخصي</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="step-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                                <span class="fw-bold">2</span>
+                            </div>
+                            <h5>تصفح المشاريع</h5>
+                            <p class="text-muted">اعثر على مشاريع تناسب مهاراتك واهتماماتك</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="step-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                                <span class="fw-bold">3</span>
+                            </div>
+                            <h5>قدم عرضك</h5>
+                            <p class="text-muted">أرسل عرضاً مناسباً لتنفيذ المشروع</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="step-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                                <span class="fw-bold">4</span>
+                            </div>
+                            <h5>أنجز وحقق الدخل</h5>
+                            <p class="text-muted">أكمل المشروع بنجاح واستلم مستحقاتك</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">قصص نجاح</h2>
+                <p class="text-muted">تجارب طلاب وعملاء حققوا النجاح على المنصة</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="صورة المستخدم" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="mb-0">أحمد محمد</h5>
+                                    <p class="text-muted mb-0">طالب هندسة برمجيات</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"ساعدني موقع U-FreeLance على تطوير مهاراتي العملية وكسب دخل إضافي أثناء دراستي. أنصح جميع الطلاب بالانضمام للمنصة!"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="صورة المستخدم" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="mb-0">نورة علي</h5>
+                                    <p class="text-muted mb-0">طالبة تصميم جرافيك</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"بفضل المنصة تمكنت من بناء محفظة أعمال قوية قبل التخرج، وهذا ساعدني كثيراً في الحصول على وظيفة دائمة في مجالي."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="صورة المستخدم" class="rounded-circle me-3">
+                                <div>
+                                    <h5 class="mb-0">سامي خالد</h5>
+                                    <p class="text-muted mb-0">عميل</p>
+                                </div>
+                            </div>
+                            <p class="mb-0">"وجدت على المنصة مواهب شابة رائعة قدمت لي خدمات بجودة عالية وأسعار مناسبة. أتعامل الآن بشكل دائم مع الطلاب المتميزين."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">ابدأ رحلتك الآن</h2>
+            <p class="lead mb-4">انضم إلى آلاف الطلاب والعملاء على منصة U-FreeLance</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="register.html" class="btn btn-light btn-lg px-4 fw-bold">إنشاء حساب</a>
+                <a href="login.html" class="btn btn-outline-light btn-lg px-4">تسجيل الدخول</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5>U-FreeLance</h5>
+                    <p class="text-muted">منصة العمل الحر المخصصة للطلاب الجامعيين</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6>روابط سريعة</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">الرئيسية</a></li>
+                        <li><a href="projects.html" class="text-muted">المشاريع</a></li>
+                        <li><a href="courses.html" class="text-muted">الدورات</a></li>
+                        <li><a href="register.html" class="text-muted">التسجيل</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للطلاب</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">كيف تبدأ</a></li>
+                        <li><a href="#" class="text-muted">نصائح للنجاح</a></li>
+                        <li><a href="#" class="text-muted">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للعملاء</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">نشر مشروع</a></li>
+                        <li><a href="#" class="text-muted">اختيار الفريلانسر</a></li>
+                        <li><a href="#" class="text-muted">ضمان الجودة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>الدعم</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">تواصل معنا</a></li>
+                        <li><a href="#" class="text-muted">سياسة الخصوصية</a></li>
+                        <li><a href="#" class="text-muted">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 bg-secondary">
+            <div class="text-center">
+                <p class="small text-muted mb-0">&copy; 2023 U-FreeLance. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

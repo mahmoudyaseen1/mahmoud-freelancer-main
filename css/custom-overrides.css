@@ -1,0 +1,213 @@
+/* Custom color scheme overrides */
+
+/* Main colors */
+:root {
+    --primary-color: #1d1c1b;
+    --secondary-color: #e1aa3b;
+    --bg-color: #ffffff;
+}
+
+/* Body background */
+body, body.bg-light {
+    background-color: var(--bg-color) !important;
+    color: var(--primary-color) !important;
+}
+
+/* Primary color overrides */
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.text-primary {
+    color: var(--secondary-color) !important;
+}
+
+/* Secondary color overrides */
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+.text-secondary {
+    color: var(--secondary-color) !important;
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #c99733 !important;
+    border-color: #c99733 !important;
+}
+
+.btn-outline-primary {
+    color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+
+.list-group-item.active {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+
+.btn-outline-primary:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+.border-primary {
+    border-color: var(--secondary-color) !important;
+}
+
+.progress-bar.bg-primary {
+    background-color: var(--secondary-color) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Navbar specific overrides */
+.navbar-dark.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Card headers with white background */
+.card-header.bg-white {
+    background-color: #ffffff !important;
+}
+
+/* Footer */
+footer.bg-dark {
+    background-color: var(--primary-color) !important;
+}
+
+/* Sections with bg-light class */
+section.bg-light, .bg-light {
+    background-color: var(--bg-color) !important;
+}
+
+/* Progress bars and icons */
+.bg-primary.bg-opacity-10 {
+    background-color: rgba(225, 170, 59, 0.1) !important;
+}
+
+/* Fix for any light elements that should remain light */
+.badge.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Header sections with primary background */
+header.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+/* CTA sections with primary background */
+section.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+/* Text styling in dark backgrounds */
+.bg-primary.text-white h1, 
+.bg-primary.text-white h2, 
+.bg-primary.text-white p, 
+.bg-primary.text-white .lead {
+    color: #ffffff !important;
+}
+
+/* Fix for step circles and feature icons */
+.step-circle.bg-primary, 
+.feature-icon.bg-primary {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Link styling */
+a {
+    color: var(--secondary-color);
+}
+
+a:hover {
+    color: #c99733;
+}
+
+/* Navbar styling */
+.navbar-light {
+    background-color: var(--bg-color) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--primary-color) !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--secondary-color) !important;
+}
+
+/* Card styling */
+.card {
+    background-color: var(--bg-color) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Text style overrides */
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Fix for pagination */
+.page-item.active .page-link {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.page-link {
+    color: var(--secondary-color) !important;
+}
+
+.page-link:hover {
+    color: #c99733 !important;
+}
+
+/* Text color for btn-light */
+.btn-light.text-primary {
+    color: var(--primary-color) !important;
+}
+
+/* Badge styling */
+.badge.bg-secondary {
+    background-color: var(--secondary-color) !important;
+    color: #000000 !important;
+}
+
+/* Message bubble styling */
+.message-sent {
+    background-color: var(--secondary-color) !important;
+    color: #000000 !important;
+}
+
+/* Input focus */
+.form-control:focus {
+    border-color: var(--secondary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(225, 170, 59, 0.25) !important;
+}
+
+/* Timeline and other elements */
+.timeline-item::before {
+    background-color: var(--secondary-color) !important;
+}
+
+/* Form check items */
+.form-check-input:checked {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+} 

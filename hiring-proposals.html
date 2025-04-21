@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عروض المشاريع - U-FreeLance</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Custom Color Overrides -->
+    <link rel="stylesheet" href="css/custom-overrides.css">
+    <style>
+        /* Custom styles for the hiring manager dashboard */
+        body {
+            background-color: #ffffff;
+        }
+        
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        
+        .dropdown-menu {
+            text-align: right;
+        }
+
+        .freelancer-card:hover {
+            border-color: #e1aa3b !important;
+        }
+
+        .rating-stars .filled {
+            color: #e1aa3b;
+        }
+
+        .rating-stars .empty {
+            color: #dddddd;
+        }
+
+        .proposal-status {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+                <i class="fas fa-handshake me-2"></i>منصة فري لانس
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">المشاريع</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">الدورات التدريبية</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            مدير التوظيف
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="hiring-dashboard.html">لوحة التحكم</a></li>
+                            <li><a class="dropdown-item active" href="hiring-proposals.html">عروض المشاريع</a></li>
+                            <li><a class="dropdown-item" href="hiring-projects.html">المشاريع النشطة</a></li>
+                            <li><a class="dropdown-item" href="hiring-completed.html">المشاريع المكتملة</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="position-relative me-2">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    2
+                                </span>
+                            </div>
+                            الإشعارات
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">تم استلام عرض جديد لمشروع "تصميم موقع"</a></li>
+                            <li><a class="dropdown-item" href="#">تم اكتمال مشروع "كتابة محتوى"</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">عرض كل الإشعارات</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="صورة المستخدم" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                            <span>عبدالله سعيد</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>الملف الشخصي</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i>الإعدادات</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="logout.html"><i class="fas fa-sign-out-alt me-2"></i>تسجيل الخروج</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">عروض المشاريع</h2>
+            <div>
+                <button class="btn btn-outline-primary me-2">
+                    <i class="fas fa-filter me-1"></i> تصفية
+                </button>
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-sort me-1"></i> ترتيب
+                </button>
+            </div>
+        </div>
+
+        <!-- Project Tabs -->
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">تطوير موقع إلكتروني متجاوب (12 عرض)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">تصميم هوية بصرية (8 عروض)</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">كتابة محتوى تسويقي (5 عروض)</a>
+            </li>
+        </ul>
+
+        <!-- Project Details Summary -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4>تطوير موقع إلكتروني متجاوب لشركة ناشئة</h4>
+                        <p class="text-muted">نشر قبل 5 أيام • تم استلام 12 عرض</p>
+                        <div class="mb-2">
+                            <span class="badge bg-primary">تطوير الويب</span>
+                            <span class="badge bg-light text-dark">HTML</span>
+                            <span class="badge bg-light text-dark">CSS</span>
+                            <span class="badge bg-light text-dark">JavaScript</span>
+                            <span class="badge bg-light text-dark">React</span>
+                        </div>
+                        <p>نحتاج إلى تطوير موقع إلكتروني متجاوب يعمل على جميع الأجهزة. يجب أن يكون التصميم عصري ويتضمن صفحة رئيسية، صفحة عن الشركة، صفحة المنتجات، ونموذج اتصال...</p>
+                    </div>
+                    <div class="col-md-4 text-md-end border-start">
+                        <div class="p-3">
+                            <h5 class="mb-3">تفاصيل المشروع</h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>الميزانية:</span>
+                                <span class="fw-bold">500 - 1000 ر.س</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>المدة المتوقعة:</span>
+                                <span>14 يوم</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>حالة المشروع:</span>
+                                <span class="badge bg-warning text-dark">قيد انتظار العروض</span>
+                            </div>
+                            <hr>
+                            <a href="project-details.html" class="btn btn-outline-primary w-100">تفاصيل المشروع</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proposals Section -->
+        <h4 class="mb-3">العروض المقدمة (12)</h4>
+
+        <!-- Proposals Cards -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="proposal-status">
+                            <span class="badge bg-success">موصى به</span>
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="صورة المستخدم" class="rounded-circle me-3" style="width: 60px; height: 60px;">
+                        <div>
+                            <h5 class="mb-1">أحمد محمد</h5>
+                            <p class="mb-0 text-muted">مطور ويب | طالب هندسة برمجيات</p>
+                            <div class="rating-stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star-half-alt filled"></i>
+                                <span class="text-muted">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h5 class="mb-1">800 ر.س</h5>
+                        <p class="mb-0 text-muted">مدة التنفيذ: 12 يوم</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>نبذة عن العرض</h5>
+                <p>مرحباً، أنا مطور ويب متخصص في تطوير المواقع المتجاوبة باستخدام React. لدي خبرة 3 سنوات في هذا المجال وأستطيع تنفيذ المشروع بجودة عالية خلال 12 يوم. سأقوم بتصميم وتطوير موقع عصري ومتجاوب يعمل على جميع الأجهزة.</p>
+                
+                <h5>المهارات والخبرات</h5>
+                <ul>
+                    <li>خبرة في تطوير واجهات المستخدم باستخدام React</li>
+                    <li>تطوير تطبيقات ويب متجاوبة</li>
+                    <li>تكامل API وخدمات الطرف الثالث</li>
+                    <li>تحسين أداء المواقع وتجربة المستخدم</li>
+                </ul>
+                
+                <h5>الأعمال السابقة</h5>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-3">
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded" alt="مشروع سابق">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="img-fluid rounded" alt="مشروع سابق">
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-comments me-1"></i> مراسلة
+                    </button>
+                    <div>
+                        <button class="btn btn-outline-secondary me-2">رفض</button>
+                        <button class="btn btn-primary">قبول العرض</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proposal 2 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="صورة المستخدم" class="rounded-circle me-3" style="width: 60px; height: 60px;">
+                        <div>
+                            <h5 class="mb-1">نورة علي</h5>
+                            <p class="mb-0 text-muted">مطورة ويب | طالبة علوم حاسب</p>
+                            <div class="rating-stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star empty"></i>
+                                <span class="text-muted">(4.0)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h5 class="mb-1">750 ر.س</h5>
+                        <p class="mb-0 text-muted">مدة التنفيذ: 14 يوم</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>نبذة عن العرض</h5>
+                <p>مرحباً، أستطيع تنفيذ مشروعكم بجودة عالية وبسعر مناسب. لدي خبرة في تطوير مواقع الويب المتجاوبة واستخدام أحدث التقنيات لضمان سرعة الموقع وسهولة الاستخدام.</p>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-comments me-1"></i> مراسلة
+                    </button>
+                    <div>
+                        <button class="btn btn-outline-secondary me-2">رفض</button>
+                        <button class="btn btn-primary">قبول العرض</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proposal 3 -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-white py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="صورة المستخدم" class="rounded-circle me-3" style="width: 60px; height: 60px;">
+                        <div>
+                            <h5 class="mb-1">سامي خالد</h5>
+                            <p class="mb-0 text-muted">مطور ويب | طالب تقنية معلومات</p>
+                            <div class="rating-stars">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star empty"></i>
+                                <i class="fas fa-star empty"></i>
+                                <span class="text-muted">(3.0)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h5 class="mb-1">650 ر.س</h5>
+                        <p class="mb-0 text-muted">مدة التنفيذ: 10 يوم</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5>نبذة عن العرض</h5>
+                <p>يمكنني تطوير موقع إلكتروني متجاوب يلبي جميع متطلباتكم. سأستخدم React مع API لتطوير موقع سريع وسهل الاستخدام. يمكنني تسليم المشروع في فترة وجيزة مع الحفاظ على جودة العمل.</p>
+                
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-comments me-1"></i> مراسلة
+                    </button>
+                    <div>
+                        <button class="btn btn-outline-secondary me-2">رفض</button>
+                        <button class="btn btn-primary">قبول العرض</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">التالي</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5>U-FreeLance</h5>
+                    <p class="text-muted">منصة العمل الحر المخصصة للطلاب الجامعيين</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h6>روابط سريعة</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">الرئيسية</a></li>
+                        <li><a href="projects.html" class="text-muted">المشاريع</a></li>
+                        <li><a href="courses.html" class="text-muted">الدورات</a></li>
+                        <li><a href="register.html" class="text-muted">التسجيل</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للطلاب</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">كيف تبدأ</a></li>
+                        <li><a href="#" class="text-muted">نصائح للنجاح</a></li>
+                        <li><a href="#" class="text-muted">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>للعملاء</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">نشر مشروع</a></li>
+                        <li><a href="#" class="text-muted">اختيار الفريلانسر</a></li>
+                        <li><a href="#" class="text-muted">ضمان الجودة</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h6>الدعم</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">تواصل معنا</a></li>
+                        <li><a href="#" class="text-muted">سياسة الخصوصية</a></li>
+                        <li><a href="#" class="text-muted">شروط الاستخدام</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 bg-secondary">
+            <div class="text-center">
+                <p class="small text-muted mb-0">&copy; 2023 U-FreeLance. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
